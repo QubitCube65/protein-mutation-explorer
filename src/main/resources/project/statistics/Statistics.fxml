@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="org.example.project.statistics.StatisticsController"
+      style="-fx-border-color: rgba(255,255,255,0.08); -fx-border-width: 0 0 0 1;">
+
+    <HBox spacing="8" styleClass="toolbar-glass"
+          style="-fx-padding: 5 8; -fx-alignment: center-left;">
+        <Label text="Statistics"
+               style="-fx-text-fill: #CDD9E5; -fx-font-weight: bold; -fx-font-size: 11px;"/>
+        <Region HBox.hgrow="ALWAYS"/>
+        <CheckBox fx:id="aaPieCheckBox" text="AA groups">
+            <tooltip><Tooltip text="Show a pie chart of amino-acid groups for the selected sequence"/></tooltip>
+        </CheckBox>
+        <CheckBox fx:id="atomPieCheckBox" text="Atoms">
+            <tooltip><Tooltip text="Show a pie chart of atom elements of the current 3D structure"/></tooltip>
+        </CheckBox>
+    </HBox>
+
+    <ScrollPane fitToWidth="true" hbarPolicy="NEVER" vbarPolicy="AS_NEEDED"
+                style="-fx-border-color: transparent;" VBox.vgrow="ALWAYS">
+        <VBox spacing="4">
+            <VBox spacing="4" style="-fx-padding: 8 10;">
+                <Label fx:id="seqCountLabel"     text="Sequences: -"
+                       style="-fx-text-fill: #8B949E; -fx-font-size: 11px;"/>
+                <Label fx:id="alignLengthLabel"  text="Alignment length: -"
+                       style="-fx-text-fill: #8B949E; -fx-font-size: 11px;"/>
+                <Label fx:id="activeSeqLabel"    text="Showing: -"
+                       style="-fx-text-fill: #6B737D; -fx-font-size: 10px;"/>
+            </VBox>
+
+            <Label text="Amino-acid groups (letter &amp; bar colour):"
+                   style="-fx-text-fill: #8B949E; -fx-font-size: 10px; -fx-padding: 2 10 0 10;"/>
+            <FlowPane hgap="10" vgap="2" style="-fx-padding: 2 10 6 10;">
+                <Label text="■ hydrophobic"   style="-fx-text-fill: #5B9BFF; -fx-font-size: 10px;"/>
+                <Label text="■ aromatic"      style="-fx-text-fill: #2CC9B8; -fx-font-size: 10px;"/>
+                <Label text="■ positive"      style="-fx-text-fill: #FF6B6B; -fx-font-size: 10px;"/>
+                <Label text="■ negative"      style="-fx-text-fill: #E06BFF; -fx-font-size: 10px;"/>
+                <Label text="■ polar"         style="-fx-text-fill: #5FD37A; -fx-font-size: 10px;"/>
+                <Label text="■ cysteine"      style="-fx-text-fill: #F5D76E; -fx-font-size: 10px;"/>
+                <Label text="■ special (G/P)" style="-fx-text-fill: #F0A64E; -fx-font-size: 10px;"/>
+            </FlowPane>
+
+            <BarChart fx:id="aaChart" animated="false" legendVisible="false"
+                      categoryGap="3" barGap="0" prefHeight="260"
+                      style="-fx-background-color: transparent;">
+                <xAxis>
+                    <CategoryAxis fx:id="aaAxis" tickLabelFill="#8B949E"
+                                  style="-fx-tick-label-font-size: 9;"/>
+                </xAxis>
+                <yAxis>
+                    <NumberAxis label="Count" minorTickVisible="false"
+                                tickLabelFill="#8B949E"
+                                style="-fx-tick-label-font-size: 9;"/>
+                </yAxis>
+            </BarChart>
+
+            <PieChart fx:id="aaPieChart" animated="false" legendVisible="false"
+                      labelsVisible="true" prefHeight="240"
+                      visible="false" managed="false"
+                      title="Amino-acid groups"/>
+
+            <PieChart fx:id="atomPieChart" animated="false" legendVisible="false"
+                      labelsVisible="true" prefHeight="240"
+                      visible="false" managed="false"
+                      title="Atom elements"/>
+        </VBox>
+    </ScrollPane>
+
+</VBox>

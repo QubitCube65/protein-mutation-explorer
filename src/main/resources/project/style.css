@@ -1,0 +1,503 @@
+/* =============================================================
+   Protein Mutation Explorer: Glass Dark Theme
+   ============================================================= */
+
+/* ── Global / Root ─────────────────────────────────────────── */
+.root {
+    -fx-font-family: "Segoe UI", "Inter", "Helvetica Neue", sans-serif;
+    -fx-font-size: 12px;
+    -fx-background: #0D1117;
+    -fx-base: #161B22;
+    -fx-control-inner-background: #161B22;
+    -fx-text-base-color: #CDD9E5;
+    -fx-text-fill: #CDD9E5;
+    -fx-accent: #58A6FF;
+    -fx-focus-color: #58A6FF;
+    -fx-faint-focus-color: rgba(88, 166, 255, 0.12);
+}
+
+.label {
+    -fx-text-fill: #CDD9E5;
+}
+
+/* ── MenuBar ────────────────────────────────────────────────── */
+.menu-bar {
+    -fx-background-color: #0D1117;
+    -fx-border-color: rgba(255, 255, 255, 0.08);
+    -fx-border-width: 0 0 1 0;
+    -fx-padding: 1 4;
+}
+.menu-bar .menu .label {
+    -fx-text-fill: #8B949E;
+    -fx-padding: 0 4;
+}
+.menu-bar .menu:hover > .menu-button,
+.menu-bar .menu:focused > .menu-button,
+.menu-bar .menu:showing > .menu-button {
+    -fx-background-color: rgba(255, 255, 255, 0.08);
+    -fx-background-radius: 4;
+}
+.menu-bar .menu:showing .label {
+    -fx-text-fill: #CDD9E5;
+}
+
+/* ── Context / Drop-down menus ──────────────────────────────── */
+.context-menu {
+    -fx-background-color: #1C2128;
+    -fx-border-color: rgba(255, 255, 255, 0.14);
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.65), 16, 0, 0, 4);
+    -fx-padding: 4 0;
+}
+.menu-item {
+    -fx-background-color: transparent;
+    -fx-padding: 5 14;
+}
+.menu-item .label {
+    -fx-text-fill: #CDD9E5;
+}
+.menu-item:focused,
+.menu-item:hover {
+    -fx-background-color: rgba(88, 166, 255, 0.18);
+    -fx-background-radius: 4;
+}
+.menu-item:disabled .label {
+    -fx-text-fill: #4A5568;
+}
+.separator.menu-item {
+    -fx-padding: 2 0;
+}
+.separator.menu-item .line {
+    -fx-border-color: rgba(255, 255, 255, 0.1);
+    -fx-border-width: 1 0 0 0;
+}
+
+/* ── Buttons ────────────────────────────────────────────────── */
+.button {
+    -fx-background-color:
+        linear-gradient(to bottom, rgba(255,255,255,0.10), rgba(255,255,255,0.04));
+    -fx-border-color: rgba(255, 255, 255, 0.18);
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+    -fx-text-fill: #CDD9E5;
+    -fx-padding: 5 13;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.35), 4, 0, 0, 1);
+}
+.button:hover {
+    -fx-background-color:
+        linear-gradient(to bottom, rgba(88,166,255,0.22), rgba(88,166,255,0.10));
+    -fx-border-color: rgba(88, 166, 255, 0.55);
+    -fx-text-fill: #79BBFF;
+    -fx-effect: dropshadow(gaussian, rgba(88, 166, 255, 0.30), 8, 0, 0, 0);
+}
+.button:pressed {
+    -fx-background-color:
+        linear-gradient(to bottom, rgba(88,166,255,0.30), rgba(88,166,255,0.18));
+    -fx-border-color: rgba(88, 166, 255, 0.75);
+    -fx-text-fill: #58A6FF;
+    -fx-effect: dropshadow(gaussian, rgba(88, 166, 255, 0.45), 6, 0, 0, 0);
+}
+.button:disabled {
+    -fx-background-color: rgba(255, 255, 255, 0.03);
+    -fx-border-color: rgba(255, 255, 255, 0.06);
+    -fx-text-fill: #3D4450;
+    -fx-effect: none;
+    -fx-cursor: default;
+}
+/* Highlighted call-to-action: e.g. "Run ESMFold" once the sequence changed */
+.button.fold-ready {
+    -fx-background-color:
+        linear-gradient(to bottom, rgba(88,166,255,0.32), rgba(88,166,255,0.16));
+    -fx-border-color: #58A6FF;
+    -fx-text-fill: #D6E9FF;
+    -fx-font-weight: bold;
+    -fx-effect: dropshadow(gaussian, rgba(88, 166, 255, 0.65), 12, 0.35, 0, 0);
+}
+.button.fold-ready:hover {
+    -fx-background-color:
+        linear-gradient(to bottom, rgba(88,166,255,0.42), rgba(88,166,255,0.24));
+    -fx-border-color: #79BBFF;
+    -fx-text-fill: #FFFFFF;
+    -fx-effect: dropshadow(gaussian, rgba(88, 166, 255, 0.80), 14, 0.4, 0, 0);
+}
+/* Blocked call-to-action: looks disabled but stays enabled so its tooltip works */
+.button.fold-blocked,
+.button.fold-blocked:hover {
+    -fx-background-color: rgba(255, 255, 255, 0.03);
+    -fx-border-color: rgba(248, 81, 73, 0.40);
+    -fx-text-fill: #6B737D;
+    -fx-font-weight: normal;
+    -fx-effect: none;
+    -fx-cursor: default;
+}
+
+/* ── TextField ──────────────────────────────────────────────── */
+.text-field {
+    -fx-background-color: rgba(255, 255, 255, 0.05);
+    -fx-border-color: rgba(255, 255, 255, 0.16);
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+    -fx-text-fill: #CDD9E5;
+    -fx-prompt-text-fill: #4A5568;
+    -fx-padding: 5 10;
+    -fx-highlight-fill: rgba(88, 166, 255, 0.30);
+    -fx-highlight-text-fill: #FFFFFF;
+}
+.text-field:focused {
+    -fx-border-color: rgba(88, 166, 255, 0.60);
+    -fx-background-color: rgba(88, 166, 255, 0.06);
+    -fx-effect: dropshadow(gaussian, rgba(88, 166, 255, 0.20), 6, 0, 0, 0);
+}
+
+/* ── ComboBox ───────────────────────────────────────────────── */
+.combo-box-base {
+    -fx-background-color: rgba(255, 255, 255, 0.07);
+    -fx-border-color: rgba(255, 255, 255, 0.16);
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+}
+.combo-box-base:focused {
+    -fx-border-color: rgba(88, 166, 255, 0.60);
+}
+.combo-box-base .arrow-button {
+    -fx-background-color: transparent;
+    -fx-padding: 0 8 0 4;
+}
+.combo-box-base .arrow {
+    -fx-background-color: #8B949E;
+}
+.combo-box .list-cell {
+    -fx-text-fill: #CDD9E5;
+    -fx-background-color: transparent;
+    -fx-padding: 3 10;
+}
+.combo-box-popup > .list-view {
+    -fx-background-color: #1C2128;
+    -fx-border-color: rgba(255, 255, 255, 0.14);
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.55), 12, 0, 0, 4);
+    -fx-padding: 4 0;
+}
+.combo-box-popup > .list-view .list-cell {
+    -fx-text-fill: #CDD9E5;
+    -fx-background-color: transparent;
+    -fx-padding: 5 14;
+}
+.combo-box-popup > .list-view .list-cell:hover,
+.combo-box-popup > .list-view .list-cell:focused {
+    -fx-background-color: rgba(88, 166, 255, 0.20);
+    -fx-background-radius: 4;
+}
+.combo-box-popup > .list-view .list-cell:selected {
+    -fx-background-color: rgba(88, 166, 255, 0.30);
+}
+
+/* ── CheckBox ───────────────────────────────────────────────── */
+.check-box .box {
+    -fx-background-color: rgba(255, 255, 255, 0.07);
+    -fx-border-color: rgba(255, 255, 255, 0.22);
+    -fx-border-radius: 4;
+    -fx-background-radius: 4;
+    -fx-min-width: 15;
+    -fx-min-height: 15;
+}
+.check-box:selected .box {
+    -fx-background-color: #58A6FF;
+    -fx-border-color: #58A6FF;
+}
+.check-box:selected .mark {
+    -fx-background-color: #0D1117;
+    -fx-shape: "M 0 0 L 3 3 L 7 -3";
+}
+.check-box .label {
+    -fx-text-fill: #CDD9E5;
+    -fx-padding: 0 0 0 4;
+}
+.check-box:disabled .label {
+    -fx-text-fill: #4A5568;
+}
+
+/* ── Slider ─────────────────────────────────────────────────── */
+.slider .track {
+    -fx-background-color:
+        linear-gradient(to right, rgba(88,166,255,0.5) 0%, rgba(88,166,255,0.5) 100%),
+        rgba(255, 255, 255, 0.10);
+    -fx-background-radius: 4;
+    -fx-pref-height: 4;
+}
+.slider .thumb {
+    -fx-background-color: #58A6FF;
+    -fx-pref-width: 14;
+    -fx-pref-height: 14;
+    -fx-background-radius: 7;
+    -fx-effect: dropshadow(gaussian, rgba(88, 166, 255, 0.45), 6, 0, 0, 0);
+}
+.slider .thumb:hover {
+    -fx-background-color: #79BBFF;
+    -fx-effect: dropshadow(gaussian, rgba(88, 166, 255, 0.65), 10, 0, 0, 0);
+}
+.slider .axis {
+    -fx-tick-label-fill: #4A5568;
+    -fx-font-size: 9px;
+}
+
+/* ── Separator ──────────────────────────────────────────────── */
+.separator .line {
+    -fx-border-color: rgba(255, 255, 255, 0.10);
+    -fx-border-width: 0 0 0 1;
+}
+
+/* ── ScrollPane ─────────────────────────────────────────────── */
+.scroll-pane {
+    -fx-background-color: transparent;
+    -fx-background: transparent;
+    -fx-border-color: transparent;
+    -fx-padding: 0;
+}
+.scroll-pane > .viewport {
+    -fx-background-color: transparent;
+}
+.scroll-pane .scroll-bar:horizontal {
+    -fx-background-color: transparent;
+    -fx-pref-height: 6;
+    -fx-opacity: 0.8;
+}
+.scroll-pane .scroll-bar:vertical {
+    -fx-background-color: transparent;
+    -fx-pref-width: 6;
+    -fx-opacity: 0.8;
+}
+.scroll-pane .scroll-bar .track,
+.scroll-pane .scroll-bar .track-background {
+    -fx-background-color: transparent;
+}
+.scroll-pane .scroll-bar .thumb {
+    -fx-background-color: rgba(255, 255, 255, 0.18);
+    -fx-background-radius: 3;
+}
+.scroll-pane .scroll-bar .thumb:hover {
+    -fx-background-color: rgba(255, 255, 255, 0.32);
+}
+.scroll-pane .scroll-bar .increment-button,
+.scroll-pane .scroll-bar .decrement-button {
+    -fx-background-color: transparent;
+    -fx-opacity: 0;
+    -fx-min-width: 0;
+    -fx-min-height: 0;
+    -fx-pref-width: 0;
+    -fx-pref-height: 0;
+}
+
+/* ── SplitPane ──────────────────────────────────────────────── */
+.split-pane {
+    -fx-background-color: #0D1117;
+    -fx-padding: 0;
+}
+.split-pane > .split-pane-divider {
+    -fx-background-color: rgba(255, 255, 255, 0.12);
+    -fx-background-insets: 0 3 0 3;   /* thin visible line inside a wider grab area */
+    -fx-padding: 0 4 0 4;             /* ~8px wide - easy to grab and drag */
+}
+.split-pane > .split-pane-divider:hover {
+    -fx-background-color: rgba(88, 166, 255, 0.65);
+    -fx-background-insets: 0 3 0 3;
+    -fx-cursor: h-resize;
+}
+
+/* ── Charts (pie labels/title readable on dark background) ───── */
+.chart-title {
+    -fx-text-fill: #CDD9E5;
+    -fx-font-size: 11px;
+}
+.chart-pie-label {
+    -fx-fill: #CDD9E5;
+    -fx-font-size: 10px;
+}
+.chart-pie-label-line {
+    -fx-stroke: rgba(255, 255, 255, 0.35);
+}
+
+/* ── Toolbar (SequenceEditor top bar) - glass panel ─────────── */
+.toolbar-glass {
+    -fx-background-color:
+        linear-gradient(to bottom,
+            rgba(255, 255, 255, 0.09) 0%,
+            rgba(255, 255, 255, 0.03) 100%);
+    -fx-border-color: rgba(255, 255, 255, 0.08);
+    -fx-border-width: 0 0 1 0;
+}
+
+/* ── 3D viewer bottom control bar - glass panel ─────────────── */
+.controls-glass {
+    -fx-background-color:
+        linear-gradient(to top,
+            rgba(255, 255, 255, 0.07) 0%,
+            rgba(255, 255, 255, 0.02) 100%);
+    -fx-border-color: rgba(255, 255, 255, 0.08);
+    -fx-border-width: 1 0 0 0;
+    -fx-padding: 8 12;
+}
+
+/* ── 3D viewer top bar ──────────────────────────────────────── */
+.viewer-topbar {
+    -fx-background-color: rgba(255, 255, 255, 0.04);
+    -fx-border-color: rgba(255, 255, 255, 0.07);
+    -fx-border-width: 0 0 1 0;
+    -fx-padding: 6 10;
+}
+.viewer-topbar .label {
+    -fx-text-fill: #4A5568;
+    -fx-font-size: 11px;
+}
+
+/* ── Residue tiles (sequence editor) ───────────────────────── */
+.residue-btn {
+    -fx-background-color: #1C2233;
+    -fx-border-color: #2D3748;
+    -fx-border-radius: 4;
+    -fx-background-radius: 4;
+    -fx-text-fill: #8B949E;
+    -fx-font-size: 9px;
+    -fx-font-family: "Consolas", "Courier New", monospace;
+    -fx-min-width: 34;
+    -fx-max-width: 34;
+    -fx-min-height: 40;
+    -fx-cursor: hand;
+    -fx-padding: 2 2;
+    -fx-alignment: center;
+}
+.residue-btn:hover {
+    -fx-background-color: #1E2D45;
+    -fx-border-color: #3A5A8A;
+    -fx-text-fill: #CDD9E5;
+}
+.residue-btn-selected {
+    -fx-background-color: #1B3A6B;
+    -fx-border-color: #58A6FF;
+    -fx-border-radius: 4;
+    -fx-background-radius: 4;
+    -fx-text-fill: #79BBFF;
+    -fx-font-size: 9px;
+    -fx-font-family: "Consolas", "Courier New", monospace;
+    -fx-min-width: 34;
+    -fx-max-width: 34;
+    -fx-min-height: 40;
+    -fx-cursor: hand;
+    -fx-padding: 2 2;
+    -fx-alignment: center;
+    -fx-effect: dropshadow(gaussian, rgba(88,166,255,0.35), 6, 0, 0, 0);
+}
+
+/* ── Undo / Redo buttons ────────────────────────────────────── */
+.undo-redo-btn {
+    -fx-background-color: rgba(255,255,255,0.06);
+    -fx-border-color: rgba(255,255,255,0.13);
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+    -fx-text-fill: #8B949E;
+    -fx-font-size: 13px;
+    -fx-padding: 3 10;
+    -fx-cursor: hand;
+}
+.undo-redo-btn:hover {
+    -fx-background-color: rgba(88,166,255,0.15);
+    -fx-border-color: rgba(88,166,255,0.45);
+    -fx-text-fill: #79BBFF;
+    -fx-effect: dropshadow(gaussian, rgba(88,166,255,0.25), 6, 0, 0, 0);
+}
+.undo-redo-btn:disabled {
+    -fx-background-color: rgba(255,255,255,0.02);
+    -fx-border-color: rgba(255,255,255,0.05);
+    -fx-text-fill: #3D4450;
+    -fx-effect: none;
+    -fx-cursor: default;
+}
+
+/* ── TabPane (main view switcher) ───────────────────────────── */
+.main-tab-pane {
+    -fx-background-color: transparent;
+}
+.main-tab-pane > .tab-header-area {
+    -fx-background-color: #0D1117;
+    -fx-border-color: rgba(255,255,255,0.08);
+    -fx-border-width: 0 0 1 0;
+    -fx-padding: 0 8 0 8;
+}
+.main-tab-pane > .tab-header-area > .tab-header-background {
+    -fx-background-color: transparent;
+}
+.main-tab-pane > .tab-header-area > .headers-region > .tab {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-padding: 6 18 6 18;
+    -fx-background-radius: 0;
+    -fx-background-insets: 0;
+}
+.main-tab-pane > .tab-header-area > .headers-region > .tab .tab-label {
+    -fx-text-fill: #6B737D;
+    -fx-font-size: 12px;
+}
+.main-tab-pane > .tab-header-area > .headers-region > .tab:hover .tab-label {
+    -fx-text-fill: #8B949E;
+}
+.main-tab-pane > .tab-header-area > .headers-region > .tab:selected {
+    -fx-background-color: rgba(88,166,255,0.08);
+    -fx-border-color: transparent transparent #58A6FF transparent;
+    -fx-border-width: 0 0 2 0;
+    -fx-background-radius: 4 4 0 0;
+}
+.main-tab-pane > .tab-header-area > .headers-region > .tab:selected .tab-label {
+    -fx-text-fill: #CDD9E5;
+    -fx-font-weight: bold;
+}
+.main-tab-pane > .tab-content-area {
+    -fx-background-color: transparent;
+    -fx-padding: 0;
+}
+/* hide the close button region entirely */
+.main-tab-pane > .tab-header-area > .headers-region > .tab > .tab-container > .tab-close-button {
+    -fx-graphic: null;
+    -fx-max-width: 0;
+    -fx-max-height: 0;
+    -fx-padding: 0;
+    -fx-opacity: 0;
+}
+
+/* ── BarChart ─────────────────────────────────────────────────── */
+.chart-plot-background {
+    -fx-background-color: rgba(255,255,255,0.02);
+    -fx-border-color: transparent;
+}
+.chart-horizontal-grid-lines {
+    -fx-stroke: rgba(255,255,255,0.06);
+}
+.chart-vertical-grid-lines {
+    -fx-stroke: transparent;
+}
+.default-color0.chart-bar {
+    -fx-bar-fill: #58A6FF;
+    -fx-background-radius: 2 2 0 0;
+}
+.chart-content {
+    -fx-padding: 4 8 4 4;
+}
+
+/* ── Conformation panel ─────────────────────────────────────── */
+.conformations-section {
+    -fx-background-color:
+        linear-gradient(to bottom,
+            rgba(255, 255, 255, 0.05) 0%,
+            rgba(255, 255, 255, 0.01) 100%);
+    -fx-border-color: rgba(255, 255, 255, 0.08);
+    -fx-border-width: 0 0 0 1;
+}
+.conformations-header {
+    -fx-text-fill: #6B737D;
+    -fx-font-size: 10px;
+    -fx-font-weight: bold;
+    -fx-padding: 10 10 4 10;
+    -fx-letter-spacing: 0.8;
+}

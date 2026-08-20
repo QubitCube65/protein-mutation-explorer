@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="org.example.project.alignment.AlignmentController"
+      style="-fx-border-color: rgba(255,255,255,0.08); -fx-border-width: 0 0 1 0;">
+
+    <HBox spacing="6" styleClass="toolbar-glass" style="-fx-padding: 5 8; -fx-alignment: center-left;">
+        <Label text="Alignment" style="-fx-text-fill: #CDD9E5; -fx-font-weight: bold; -fx-font-size: 11px;"/>
+        <Button fx:id="foldSelectedButton" text="Fold Selected" disable="true">
+            <tooltip><Tooltip text="Run ESMFold on the selected sequence and save as new conformation"/></tooltip>
+        </Button>
+        <CheckBox fx:id="colorResiduesCheckBox" text="Color residues" selected="true">
+            <tooltip><Tooltip text="Colour each letter by amino-acid group (hydrophobic, polar, charged, aromatic, …)"/></tooltip>
+        </CheckBox>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Label fx:id="alignmentStatusLabel" text="No alignment loaded"
+               style="-fx-text-fill: #6B737D; -fx-font-size: 11px;"/>
+    </HBox>
+
+    <ScrollPane fx:id="alignmentScrollPane" fitToHeight="true"
+                hbarPolicy="AS_NEEDED" vbarPolicy="AS_NEEDED"
+                style="-fx-border-color: transparent;"
+                VBox.vgrow="ALWAYS">
+        <VBox fx:id="alignmentGrid" spacing="0"
+              style="-fx-padding: 4; -fx-background-color: transparent;"/>
+    </ScrollPane>
+
+    <Label text="Click a sequence name to show its statistics  ·  Green tint = ≥ 95 % conserved column  ·  Letter colour = amino-acid group (see legend in Statistics)"
+           style="-fx-text-fill: #8B949E; -fx-font-size: 10px; -fx-padding: 3 8;"/>
+</VBox>

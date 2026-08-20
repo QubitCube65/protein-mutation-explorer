@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="org.example.project.nledit.NlEditController"
+      spacing="10" style="-fx-padding: 14;">
+
+    <Label text="Describe your edit in plain language"
+           style="-fx-font-size: 14px; -fx-font-weight: bold;"/>
+    <Label text="e.g. “Replace residue 57 by alanine”, “Mutate all cysteines to serines”, “Delete residues 40–42”, “Insert a Gly-Ser linker after residue 80”"
+           wrapText="true" style="-fx-text-fill: #8B949E; -fx-font-size: 11px;"/>
+
+    <TextArea fx:id="requestArea" prefRowCount="3" wrapText="true"
+              promptText="Type your editing request here…"/>
+
+    <HBox fx:id="proposeBar" spacing="8" style="-fx-alignment: center-left;">
+        <Button fx:id="proposeButton" text="Propose edits" defaultButton="true"/>
+        <Label fx:id="statusLabel" style="-fx-text-fill: #6B737D; -fx-font-size: 11px;"/>
+    </HBox>
+
+    <Label text="Proposed changes (only ✓ valid edits will be applied)"
+           style="-fx-text-fill: #8B949E; -fx-font-size: 11px;"/>
+
+    <TableView fx:id="previewTable" VBox.vgrow="ALWAYS" prefHeight="220">
+        <placeholder>
+            <Label text="No proposal yet - enter a request and press “Propose edits”."
+                   style="-fx-text-fill: #6B737D;"/>
+        </placeholder>
+        <columns>
+            <TableColumn fx:id="statusColumn" text="" prefWidth="42"/>
+            <TableColumn fx:id="editColumn"   text="Proposed edit" prefWidth="360"/>
+            <TableColumn fx:id="noteColumn"   text="Note" prefWidth="200"/>
+        </columns>
+    </TableView>
+
+    <Label fx:id="explanationLabel" wrapText="true"
+           style="-fx-text-fill: #8B949E; -fx-font-size: 11px; -fx-font-style: italic;"/>
+
+    <HBox spacing="8" style="-fx-alignment: center-right;">
+        <Region HBox.hgrow="ALWAYS"/>
+        <Button fx:id="rejectButton" text="Cancel"/>
+        <Button fx:id="acceptButton" text="Apply accepted edits" disable="true"/>
+    </HBox>
+</VBox>

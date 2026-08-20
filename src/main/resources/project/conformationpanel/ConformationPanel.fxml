@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="org.example.project.conformationpanel.ConformationPanelController"
+      styleClass="conformations-section" minWidth="0">
+
+    <Label text="CONFORMATIONS" styleClass="conformations-header"/>
+
+    <HBox spacing="6" style="-fx-padding: 4 8 8 8; -fx-alignment: center-left;">
+        <TextField fx:id="descriptionField" promptText="Description…" HBox.hgrow="ALWAYS"/>
+        <Button fx:id="addConformationButton" text="Add" disable="true">
+            <tooltip><Tooltip text="Save the current sequence and its 3D structure as a conformation"/></tooltip>
+        </Button>
+    </HBox>
+
+    <ScrollPane fitToWidth="true" VBox.vgrow="ALWAYS">
+        <FlowPane fx:id="conformationFlowPane" hgap="8" vgap="8"
+                  style="-fx-padding: 8;"/>
+    </ScrollPane>
+</VBox>

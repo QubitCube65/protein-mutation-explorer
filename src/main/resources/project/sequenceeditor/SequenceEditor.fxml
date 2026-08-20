@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="org.example.project.sequenceeditor.SequenceEditorController"
+      style="-fx-border-color: rgba(255,255,255,0.08); -fx-border-width: 0 0 1 0;">
+
+    <!-- Toolbar -->
+    <HBox spacing="6" styleClass="toolbar-glass" style="-fx-padding: 5 8; -fx-alignment: center-left;">
+        <Button fx:id="loadFastaButton"  text="Load FASTA…"/>
+        <Button fx:id="saveFastaButton"  text="Save FASTA…" disable="true"/>
+        <Separator orientation="VERTICAL" style="-fx-padding: 0 2;"/>
+        <Button fx:id="undoButton" text="↩" styleClass="undo-redo-btn" disable="true">
+            <tooltip><Tooltip text="Undo (Ctrl+Z)"/></tooltip>
+        </Button>
+        <Button fx:id="redoButton" text="↪" styleClass="undo-redo-btn" disable="true">
+            <tooltip><Tooltip text="Redo (Ctrl+Y)"/></tooltip>
+        </Button>
+        <Separator orientation="VERTICAL" style="-fx-padding: 0 2;"/>
+        <Label text="AA:" style="-fx-text-fill: #8B949E;"/>
+        <ComboBox fx:id="mutationComboBox" prefWidth="65"/>
+        <Button fx:id="applyMutationButton" text="Mutate" disable="true">
+            <tooltip><Tooltip text="Replace selected residue(s) with chosen AA"/></tooltip>
+        </Button>
+        <Button fx:id="insertButton" text="Insert" disable="true">
+            <tooltip><Tooltip text="Insert the chosen AA after the selected position (select a residue + pick an AA). Use right-click for Insert Before/After anywhere."/></tooltip>
+        </Button>
+        <Button fx:id="deleteButton" text="Delete" disable="true">
+            <tooltip><Tooltip text="Delete selected residue(s)"/></tooltip>
+        </Button>
+        <Separator orientation="VERTICAL" style="-fx-padding: 0 2;"/>
+        <Button fx:id="esmFoldButton" text="Run ESMFold" disable="true"/>
+        <Label text="Hits:" style="-fx-text-fill: #8B949E;"/>
+        <ComboBox fx:id="blastHitsComboBox" prefWidth="56" disable="true">
+            <tooltip><Tooltip text="Number of BLAST hits to retrieve"/></tooltip>
+        </ComboBox>
+        <Button fx:id="findRelatedButton" text="Find Related" disable="true">
+            <tooltip><Tooltip text="Search NCBI BLAST for related protein sequences (swissprot)"/></tooltip>
+        </Button>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Label fx:id="statusLabel" style="-fx-text-fill: #6B737D; -fx-font-size: 11px;"/>
+    </HBox>
+
+    <!-- Scrollable residue strip -->
+    <ScrollPane fitToHeight="true" hbarPolicy="AS_NEEDED" vbarPolicy="NEVER"
+                style="-fx-border-color: transparent;" prefHeight="58">
+        <HBox fx:id="sequenceBox" spacing="2"
+              style="-fx-padding: 4 4; -fx-alignment: center-left; -fx-background-color: transparent;"/>
+    </ScrollPane>
+</VBox>

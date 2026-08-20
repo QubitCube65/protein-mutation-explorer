@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="org.example.project.window.WindowController">
+    <top>
+        <VBox>
+            <MenuBar>
+                <Menu text="Edit">
+                    <MenuItem fx:id="undoMenuItem" text="Undo" accelerator="Ctrl+Z"/>
+                    <MenuItem fx:id="redoMenuItem" text="Redo" accelerator="Ctrl+Y"/>
+                </Menu>
+                <Menu text="Application">
+                    <MenuItem fx:id="quitMenuItem" text="Quit" accelerator="Ctrl+Q"/>
+                </Menu>
+                <Menu text="Help">
+                    <MenuItem fx:id="helpMenuItem" text="How to use…" accelerator="F1"/>
+                </Menu>
+            </MenuBar>
+            <fx:include fx:id="sequenceEditor" source="../sequenceeditor/SequenceEditor.fxml"/>
+        </VBox>
+    </top>
+    <center>
+        <TabPane tabClosingPolicy="UNAVAILABLE" styleClass="main-tab-pane">
+            <Tab text="Structure">
+                <SplitPane dividerPositions="0.72">
+                    <fx:include fx:id="protein3D" source="../protein3d/Protein3D.fxml"/>
+                    <fx:include fx:id="conformationPanel" source="../conformationpanel/ConformationPanel.fxml"/>
+                </SplitPane>
+            </Tab>
+            <Tab text="Alignment">
+                <SplitPane dividerPositions="0.70">
+                    <fx:include fx:id="alignment" source="../alignment/Alignment.fxml"/>
+                    <fx:include fx:id="statistics" source="../statistics/Statistics.fxml"/>
+                </SplitPane>
+            </Tab>
+        </TabPane>
+    </center>
+</BorderPane>

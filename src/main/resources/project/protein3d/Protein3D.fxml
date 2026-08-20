@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="org.example.project.protein3d.Protein3DController"
+            minWidth="0">
+    <top>
+        <HBox spacing="10" styleClass="viewer-topbar" style="-fx-alignment: center-left;">
+            <Button fx:id="zoomInButton"  text="Zoom In"/>
+            <Button fx:id="zoomOutButton" text="Zoom Out"/>
+            <Label text="Arrow keys or drag to rotate · Scroll or ± keys to zoom"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Label fx:id="structureInfoLabel" style="-fx-text-fill: #6B737D; -fx-font-size: 11px;"/>
+            <Button fx:id="aiEditButton" text="AI Edit…" disable="true">
+                <tooltip><Tooltip text="Edit the sequence with a natural-language request (OpenAI)"/></tooltip>
+            </Button>
+        </HBox>
+    </top>
+    <center>
+        <StackPane fx:id="subSceneContainer"/>
+    </center>
+    <bottom>
+        <GridPane hgap="12" vgap="6" styleClass="controls-glass" style="-fx-alignment: center;">
+            <Label text="Atom Radius"  GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+            <Slider fx:id="atomRadiusSlider" min="0.05" max="1.4" value="0.20"
+                    showTickLabels="true" showTickMarks="true" majorTickUnit="0.25"
+                    GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+            <Label text="Bond Radius"  GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+            <Slider fx:id="bondRadiusSlider" min="0.02" max="0.60" value="0.15"
+                    showTickLabels="true" showTickMarks="true" majorTickUnit="0.10"
+                    GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+            <CheckBox fx:id="atomsVisibleCheckBox"   text="Atoms"     selected="true"  GridPane.rowIndex="0" GridPane.columnIndex="2"/>
+            <CheckBox fx:id="bondsVisibleCheckBox"   text="Bonds"     selected="true"  GridPane.rowIndex="1" GridPane.columnIndex="2"/>
+            <CheckBox fx:id="ribbonVisibleCheckBox"  text="Ribbon"    selected="false" GridPane.rowIndex="2" GridPane.columnIndex="2"/>
+            <CheckBox fx:id="wireframeCheckBox"      text="Wireframe" selected="false" GridPane.rowIndex="2" GridPane.columnIndex="3"/>
+        </GridPane>
+    </bottom>
+</BorderPane>
