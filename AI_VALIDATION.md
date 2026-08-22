@@ -2,7 +2,7 @@
 
 The Protein Mutation Explorer lets you edit a protein sequence by describing the
 change in plain language. This document describes how the program keeps that
-feature safe — how a language model's output is prevented from reaching the
+feature safe - how a language model's output is prevented from reaching the
 sequence unchecked.
 
 ## Core guarantee
