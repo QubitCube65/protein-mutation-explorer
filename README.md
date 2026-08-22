@@ -4,6 +4,11 @@ A JavaFX desktop application for exploring how mutations affect protein structur
 Load a sequence, edit it — by hand or by describing the change in plain English —
 predict the 3D fold, and compare the resulting conformations side by side.
 
+<img src="docs/selection-sync.gif" width="950" alt="Selecting residues in the sequence strip highlights the matching atoms in the 3D structure">
+
+*Selecting a range of residues highlights the corresponding atoms in the folded
+structure; the backbone ribbon can be overlaid on the ball-and-stick model.*
+
 Built as the semester project for *Advanced Java for Bioinformatics* (SoSe 2026,
 Prof. Dr. Daniel Huson, Universität Tübingen).
 
